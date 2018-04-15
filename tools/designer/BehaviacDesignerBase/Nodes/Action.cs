@@ -300,7 +300,7 @@ namespace Behaviac.Design.Nodes
                     result.Add(new Node.ErrorCheck(this, ErrorCheckLevel.Error, Resources.NoParam));
                 }
 
-                if (this.Method.NativeReturnType != "behaviac::EBTStatus")
+                if(! (this.Method.NativeReturnType == "behaviac::EBTStatus" ||  this.Method.NativeReturnType == "EBTStatus"))
                 {
                     if (EBTStatus.BT_INVALID == this.ResultOption)
                     {

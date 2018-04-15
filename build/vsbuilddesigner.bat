@@ -2,12 +2,12 @@
 
 echo build designer. CurrentDirectory: %CD%
 
-set VSEXE="%VS120COMNTOOLS%..\IDE\devenv.exe"
+set VSEXE="%VS140COMNTOOLS%..\IDE\devenv.exe"
 
 cd ..\tools\Designer\
 echo CurrentDirectory: %CD%
 
-del .\out\BehaviacDesigner*.exe /q
+rem del .\out\BehaviacDesigner*.exe /q
 
 %VSEXE% ".\BehaviacDesigner.sln" /Rebuild "Debug|Any CPU" /Out build.log
 if not exist .\out\BehaviacDesigner.exe goto l_error
@@ -21,8 +21,8 @@ rem editbin
 cd .\out\
 echo CurrentDirectory: %CD%
 
-"%VS120COMNTOOLS%..\..\VC\bin\editbin" /LARGEADDRESSAWARE BehaviacDesigner.exe
-"%VS120COMNTOOLS%..\..\VC\bin\editbin" /LARGEADDRESSAWARE BehaviacDesigner_d.exe
+"%VS140COMNTOOLS%..\..\VC\bin\editbin" /LARGEADDRESSAWARE BehaviacDesigner.exe
+"%VS140COMNTOOLS%..\..\VC\bin\editbin" /LARGEADDRESSAWARE BehaviacDesigner_d.exe
 
 rem back out
 cd ..

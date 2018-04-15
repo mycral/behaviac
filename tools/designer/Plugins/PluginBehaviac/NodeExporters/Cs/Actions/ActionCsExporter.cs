@@ -108,11 +108,11 @@ namespace PluginBehaviac.NodeExporters
                 string nativeReturnType = DataCsExporter.GetGeneratedNativeType(action.Method.NativeReturnType);
                 string method = MethodCsExporter.GenerateCode(node, action.Method, stream, indent + "\t\t\t", string.Empty, string.Empty, "method");
 
-                if ("behaviac.EBTStatus" == nativeReturnType)
+                if ("behaviac.EBTStatus" == nativeReturnType  || nativeReturnType == "EBTStatus")
                 {
                     resultStatus = "result";
 
-                    stream.WriteLine("{0}\t\t\t{1} result = {2};", indent, nativeReturnType, method);
+                    stream.WriteLine("{0}\t\t\t{1} result = {2};", indent, "behaviac.EBTStatus", method);
                     MethodCsExporter.PostGenerateCode(action.Method, stream, indent + "\t\t\t", string.Empty, string.Empty, "method");
                 }
                 else
